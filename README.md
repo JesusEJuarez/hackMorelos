@@ -3,7 +3,7 @@
 
 Noncommunicable diseases (NCDs) kill 41 million people annually, representing 74% of all deaths worldwide. These diseases affect all age groups and regions but are often linked to older age. Factors such as unplanned urban development, unhealthy lifestyles, and aging populations fuel NCDs. To combat this, early detection, screening, treatment, and palliative care are essential. Cost-effective government solutions can reduce common risk factors by tracking disease trends and progression.
 
-"Reminder Care" aims to provide tools for pediatricians to send continuous treatment reminders via auditory stimuli, optimizing health control in older adults.
+"Reminder Care" aims to provide tools for doctors to send continuous treatment reminders via auditory stimuli, optimizing health control in older adults.
 
 ## Justification
 
