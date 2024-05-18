@@ -35,5 +35,10 @@ Aging increases the prevalence of chronic diseases, leading to higher medication
 ### System Overview:
 ![System Diagram](Figures/Reminder.png)
 
+
+## Implementation
+
+The `call_maker.py` script loads the database from MongoDB to list the appointments and medications required for each patient. Subsequently, it schedules reminders to make calls at the appropriate times.
+
 By leveraging simple phone calls, "Reminder Care" ensures ease of use and accessibility for older adults, promoting better health outcomes through improved medication adherence and health management.
 
