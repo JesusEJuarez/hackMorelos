@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Médicos y Pacientes</title>
+    <link rel="stylesheet" href="form_styles.css">
+</head>
+<body>
+    <h1>Agregar Médico</h1>
+    <form id="medicoForm">
+        <input type="text" id="nombreMedico" placeholder="Nombre" required>
+        <input type="text" id="numeroMedico" placeholder="Número" required>
+        <input type="text" id="cedulaMedico" placeholder="Cédula" required>
+        <input type="email" id="correoMedico" placeholder="Correo" required>
+        <button type="submit">Agregar Médico</button>
+    </form>
+
+    <h1>Agregar Paciente</h1>
+    <form id="pacienteForm">
+        <input type="text" id="nombrePaciente" placeholder="Nombre" required>
+        <input type="number" id="edadPaciente" placeholder="Edad" required>
+        <input type="text" id="numeroPaciente" placeholder="Número" required>
+        <input type="text" id="medicamentosPaciente" placeholder="Medicamentos" required>
+        <input type="text" id="horarioPaciente" placeholder="Horario" required>
+        <input type="text" id="cedulaPaciente" placeholder="Cédula" required>
+        <input type="date" id="fechaCitaSigPaciente" placeholder="Fecha de la siguiente cita" required>
+        <input type="text" id="nombreFamiliar" placeholder="Nombre del Familiar">
+        <input type="text" id="numeroFamiliar" placeholder="Número del Familiar">
+        <button type="submit">Agregar Paciente</button>
+    </form>
+
+    <h1>Listar Pacientes</h1>
+    <form id="listarPacientesForm">
+        <input type="text" id="nombrePacienteBuscar" placeholder="Nombre del Paciente" required>
+        <button type="submit">Buscar</button>
+    </form>
+    <div id="resultadosPacientes"></div>
+
+    <script>
+        const apiBase = 'http://localhost:3000';
+
+        document.getElementById('medicoForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombreMedico').value;
+            const numero = document.getElementById('numeroMedico').value;
+            const cedula = document.getElementById('cedulaMedico').value;
+            const correo = document.getElementById('correoMedico').value;
+
+            await fetch(`${apiBase}/agregarMedico`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, numero, cedula, correo })
+            });
+        });
+
+        document.getElementById('pacienteForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombrePaciente').value;
+            const edad = document.getElementById('edadPaciente').value;
+            const numero = document.getElementById('numeroPaciente').value;
+            const medicamentos = document.getElementById('medicamentosPaciente').value;
+            const horario = document.getElementById('horarioPaciente').value;
+            const cedula = document.getElementById('cedulaPaciente').value;
+            const fechaCitaSig = document.getElementById('fechaCitaSigPaciente').value;
+            const nombreFamiliar = document.getElementById('nombreFamiliar').value;
+            const numeroFamiliar = document.getElementById('numeroFamiliar').value;
+
+            await fetch(`${apiBase}/agregarPaciente`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, edad, numero, medicamentos, horario, cedula, fechaCitaSig, nombreFamiliar, numeroFamiliar })
+            });
+        });
+
+        document.getElementById('listarPacientesForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombrePacienteBuscar').value;
+
+            const response = await fetch(`${apiBase}/listarPacientes?nombre=${nombre}`);
+            const pacientes = await response.json();
+
+            const resultadosDiv = document.getElementById('resultadosPacientes');
+            resultadosDiv.innerHTML = '';
+            pacientes.forEach(paciente => {
+                const p = document.createElement('p');
+                p.textContent = JSON.stringify(paciente);
+                resultadosDiv.appendChild(p);
+            });
+        });
+    </script>
+</body>
+</html>
