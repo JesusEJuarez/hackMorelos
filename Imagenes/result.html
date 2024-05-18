@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Processed Text</h1>
+      <ul>
+        {% for line in texto_filtrado %}
+          <li>{{ line }}</li>
+        {% endfor %}
+      </ul>
+      <a href="/" style="display: block; text-align: center; margin-top: 20px; color: #007bff;">Upload another image</a>
+    </div>
+  </body>
+</html>

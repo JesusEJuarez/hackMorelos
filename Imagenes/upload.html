@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Subir una imagen de la receta para generar registro de datos del paciente.</h1>
+      <form method="post" action="/upload" enctype="multipart/form-data">
+        <input type="file" name="file">
+        <input type="submit" value="Llenar datos mediante imagen de la receta.">
+      </form>
+      <a href="http://localhost:3001"><div align="center">
+        <button style="margin-top: 20px; padding: 10px 20px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+          Llenar datos mediante formulario.
+        </button>
+    </div></a>
+    </div>
+  </body>
+</html>
